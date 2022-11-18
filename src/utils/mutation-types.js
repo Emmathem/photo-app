@@ -1,0 +1,4 @@
+export const FETCH_ALL_PHOTOS = 'FETCH_ALL_PHOTOS';
+export const SEARCH_ONE_PHOTO = 'SEARCH_ONE_PHOTO';
+export const LIKE_A_PHOTO = 'LIKE_A_PHOTO';
+export const UNLIKE_A_PHOTO = 'UNLIKE_A_PHOTO';

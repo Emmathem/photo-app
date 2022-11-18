@@ -1,26 +1,48 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="default wrapper">
+    <app-navigation :mobile-menu="mobileMenu" @toggleMenu="toggleMobileMenu" />
+    <section class="sectionContainer">
+      <app-header :mobile-menu="mobileMenu" @toggleMenu="toggleMobileMenu" />
+      <RouterView />
+    </section>
+    <div
+        class="onMenuOpen"
+        :class="!mobileMenu ? 'open' : ''"
+        @click="elementClicked"
+    ></div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppNavigation from "@/components/defaults/AppNavigation";
+import AppHeader from "@/components/defaults/AppHeader";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    AppHeader,
+    AppNavigation,
+  },
+  data () {
+    return {
+      mobileMenu: false
+    }
+  },
+  mounted () {
+    if (!this.$root.client_id) {
+      this.$router.push('/auth')
+    }
+  },
+  methods: {
+    toggleMobileMenu () {
+      this.mobileMenu = !this.mobileMenu
+    },
+    elementClicked () {
+      this.mobileMenu = true
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

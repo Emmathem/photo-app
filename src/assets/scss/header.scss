@@ -1,0 +1,642 @@
+//Header Styles
+@mixin circleImage($width, $height, $border) {
+  width: $width;
+  height: $height;
+  border: $border;
+  border-radius: 50%;
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  img {
+    // object-fit: contain;
+    width: inherit;
+    // display: inline;
+    height: 100%;
+    margin: 0 auto;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px 0;
+  justify-content: space-around;
+  margin: 10px 0;
+  transition: ease all 0.5s;
+
+  &__search {
+    flex: 1;
+    // border: 1px solid yellow;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .3);
+    border-radius: 4px;
+  }
+
+  &__nav {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+
+    &__notify {
+      display: flex;
+      position: relative;
+      cursor: pointer;
+
+      .count {
+        width: 10px;
+        height: 10px;
+        padding: 5px;
+        border-radius: 50%;
+        background: #f00;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        span {
+          font-size: 8px;
+        }
+      }
+
+      .anticon {
+        font-size: 1.6rem;
+        color: #4938B1;
+      }
+    }
+
+    >div {
+      flex: 1;
+      margin: 0 0 0 3rem;
+    }
+
+    &__user {
+      display: flex;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+
+      .avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        background: #fff;
+        position: relative;
+        overflow: hidden;
+
+        img {
+          display: inline;
+          width: inherit;
+          object-fit: contain;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .status {
+          width: 10px;
+          height: 10px;
+          padding: 5px;
+          border-radius: 50%;
+          background: #6cc070;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          position: absolute;
+          bottom: -3px;
+          right: 0;
+          z-index: 9999;
+
+          span {
+            font-size: 8px;
+          }
+        }
+      }
+
+      .username {
+        color: #4938B1;
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+
+        .anticon {
+          font-size: .4rem;
+          color: #4938B1;
+        }
+
+        span {
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+
+  &__notify {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    height: auto;
+    // overflow: hidden;
+    right: 0;
+    z-index: 2;
+    border-radius: 4px;
+    top: 40px;
+    transition: ease all 0.45s;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, .05);
+
+    &__hanger {
+      position: absolute;
+      left: 46px;
+      top: -14px;
+      z-index: 100;
+
+      .anticon {
+        color: #fff;
+      }
+    }
+
+    &__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    &__image {
+      @include circleImage(30px, 30px, 1px solid #000)
+    }
+
+    &__text {
+      overflow: hidden;
+      width: 70%;
+      margin: auto;
+
+      h5 {
+        color: #555;
+        margin-bottom: 0;
+      }
+
+      h6 {
+        font-size: .5rem;
+        margin: 0;
+        font-weight: lighter;
+      }
+    }
+
+    &__icon {
+      img {
+        width: 10px;
+      }
+    }
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 0;
+
+      li a {
+        display: flex;
+        padding: 7px 0 7px 28px;
+        // padding-left: 20px;
+        align-items: center;
+        justify-content: left;
+        text-decoration: none;
+
+        &:hover {
+          background-color: #f7f7f7;
+          transition: ease all 0.5s;
+          font-weight: bold;
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(#4938B1, .09);
+  width: 200px;
+  max-width: 200px;
+  flex: 0 0 200px;
+  padding: 5px 1.1rem 0 2.83rem;
+  background: #f7f7f7;
+  //transition: ease all 0.5s;
+  transform: translateX(0px);
+  //transition: transform 0.4s ease;
+  transition: ease all 1.5s;
+  //transform: translate(0);
+
+  //&.active {
+  //  display: block;
+  //  transform: translateX(-100%);
+  //  transition: ease all 0.5s;
+  //}
+
+  &__header {
+    padding: 15px 0;
+
+    // border: 1px solid blue;
+    img {
+      width: 100%;
+    }
+  }
+
+  &__nav {
+    transition: ease all 0.5s;
+
+    h4 {
+      padding-left: .91rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    ul {
+      transition: ease all 0.5s;
+      list-style: none;
+      padding: 0;
+      overflow: hidden;
+
+      li a {
+        display: flex;
+        align-items: center;
+        padding: 5px 15px;
+        text-decoration: none;
+        margin-bottom: 5px;
+        color: #777;
+
+        .icons {
+          display: flex;
+          padding-right: 13px;
+          font-size: 13px;
+        }
+
+        .anticon {
+          color: #777;
+        }
+
+        &.active {
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: transparent;
+          color: rgb(0, 0, 0);
+
+          .anticon {
+            color: #4938B1;
+          }
+        }
+
+        &:hover {
+          border-radius: 4px;
+          border: 1px solid rgba(#4938B1, .09);
+          background: transparent;
+          color: rgb(0, 0, 0);
+          transition: ease all 0.5s;
+          overflow: hidden;
+
+          .anticon {
+            color: #4938B1;
+          }
+        }
+      }
+    }
+  }
+}
+
+//mobile
+
+@media only screen and (max-width: 768px) {
+  .header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px 0;
+    justify-content: space-around;
+    margin: 10px 0;
+    transition: ease all 0.5s;
+  
+    &__mobile {
+      margin-right: 20px;
+      cursor: pointer;
+      font-size: 1.57rem;
+    }
+  
+    &__search {
+      border: 1px solid red;
+      flex: 1;
+      // border: 1px solid yellow;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, .3);
+      border-radius: 4px;
+      &__mobile {
+        display: flex;
+        width: 100%;
+        padding: 13px 0;
+        .ant-input {
+          height: 39px;
+        }
+      }
+    }
+  
+    &__formInput {
+      display: flex;
+      align-items: center;
+      position: relative;
+  
+      &__icon {
+        position: absolute;
+        margin: 0 0 0 1.5rem;
+      }
+  
+      &__control {
+        width: 100%;
+        padding: 0.5rem 1.2rem 0.5rem 4rem;
+        height: calc(30px + 10px);
+        border: none;
+        outline: none;
+        background: #fff;
+        border-radius: 4px;
+  
+        &::placeholder {
+          color: #ccc;
+          font-weight: lighter;
+        }
+      }
+  
+      &__search {
+        position: absolute;
+        right: 0;
+        margin: 0 15px 0 0;
+  
+        button {
+          border-radius: 4px;
+          border: none;
+          outline: none;
+          background-color: #4938B1;
+          color: #fff;
+          font-size: .8rem;
+          font-weight: lighter;
+          padding: 3px 15px;
+          cursor: pointer;
+          overflow: hidden;
+  
+          &:hover {
+            font-weight: 400;
+            transition: ease all 0.5s;
+          }
+        }
+      }
+    }
+  
+    &__nav {
+      margin-left: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: relative;
+  
+      &__notify {
+        display: flex;
+        position: relative;
+        cursor: pointer;
+  
+        .count {
+          width: 10px;
+          height: 10px;
+          padding: 5px;
+          border-radius: 50%;
+          background: #f00;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+  
+          span {
+            font-size: 8px;
+          }
+        }
+  
+        .anticon {
+          font-size: 1.6rem;
+          color: #4938B1;
+        }
+      }
+  
+      >div {
+        flex: 1;
+        margin: 0 0 0 3rem;
+      }
+  
+      &__user {
+        display: flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+  
+        .avatar {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 1px solid #ccc;
+          display: flex;
+          align-items: center;
+          margin-right: 10px;
+          background: #fff;
+          position: relative;
+          overflow: hidden;
+  
+          img {
+            display: inline;
+            width: inherit;
+            object-fit: contain;
+            height: 100%;
+            overflow: hidden;
+          }
+  
+          .status {
+            width: 10px;
+            height: 10px;
+            padding: 5px;
+            border-radius: 50%;
+            background: #6cc070;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            position: absolute;
+            bottom: -3px;
+            right: 0;
+            z-index: 9999;
+  
+            span {
+              font-size: 8px;
+            }
+          }
+        }
+  
+        .username {
+          color: #4938B1;
+          display: flex;
+          align-items: center;
+          margin-left: 5px;
+  
+          .anticon {
+            font-size: .4rem;
+            color: #4938B1;
+          }
+  
+          span {
+            font-size: 12px;
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+  
+    &__notify {
+      position: absolute;
+      background-color: #fff;
+      width: 100%;
+      height: auto;
+      // overflow: hidden;
+      right: 0;
+      z-index: 2;
+      border-radius: 4px;
+      top: 40px;
+      transition: ease all 0.45s;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+      box-shadow: 1px 5px 10px rgba(0, 0, 0, .05);
+  
+      &__hanger {
+        position: absolute;
+        left: 46px;
+        top: -14px;
+        z-index: 100;
+  
+        .anticon {
+          color: #fff;
+        }
+      }
+  
+      &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 10px 10px;
+        border-bottom: 1px solid #ccc;
+      }
+  
+      &__image {
+        @include circleImage(30px, 30px, 1px solid #000)
+      }
+  
+      &__text {
+        overflow: hidden;
+        width: 70%;
+        margin: auto;
+  
+        h5 {
+          color: #555;
+          margin-bottom: 0;
+        }
+  
+        h6 {
+          font-size: .5rem;
+          margin: 0;
+          font-weight: lighter;
+        }
+      }
+  
+      &__icon {
+        img {
+          width: 10px;
+        }
+      }
+  
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+  
+      ul {
+        list-style: none;
+        margin-bottom: 0;
+  
+        li a {
+          display: flex;
+          padding: 7px 0 7px 28px;
+          // padding-left: 20px;
+          align-items: center;
+          justify-content: left;
+          text-decoration: none;
+  
+          &:hover {
+            background-color: #f7f7f7;
+            transition: ease all 0.5s;
+            font-weight: bold;
+            transform: scale(1.02);
+          }
+        }
+      }
+    }
+  }
+
+  .navigation {
+    width: 150px;
+    max-width: 150px;
+    flex: 0 0 150px;
+    padding: 5px 1.1rem 0 1rem;
+    transition: transform 0.4s ease;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    &.active {
+      display: block;
+      transform: translateX(-100%);
+      transition: ease all 0.5s;
+    }
+    &__closeMenu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin: 10px 0 0 0;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+  }
+}

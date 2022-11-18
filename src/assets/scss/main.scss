@@ -1,0 +1,245 @@
+@import "../_partials/vars";
+@import "../_partials/mixins";
+@import "../scss/header";
+
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  padding: 0;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.default {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f7f7f7;
+}
+
+.layout,
+.core__layout {
+  flex: 1;
+  height: calc(100vh - 10px);
+  margin-top: 10px;
+  // background: #2a3342;
+}
+
+.sectionContainer {
+  width: 100%;
+  display: flex;
+  //border: 1px solid #ff0000;
+  overflow: auto;
+  padding: 0 40px;
+  flex-direction: column;
+  transition: all 0.8s cubic-bezier(0.55, 0, 0.1, 1) 0.15s;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #fff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #8c9090;
+    border-radius: 5px;
+  }
+}
+
+.pagination {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+// N E W - S T Y L E S
+.wrapper .body {
+  padding-left: 230px * 2;
+}
+
+.wrapper.wrapper--collapse-inner-menu .body {
+  padding-left: 270px;
+}
+
+.wrapper.wrapper--collapse.wrapper--collapse-inner-menu .body {
+  padding-left: 130px;
+}
+
+.wrapper.wrapper--collapse .body {
+  padding-left: 285px;
+}
+
+
+.ant-spin {
+  color: rgb(0, 0, 0);
+}
+
+.error_container {
+  display: flex;
+  height: 90vh;
+  margin: auto;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  animation: slide 2s linear;
+}
+
+.slider {
+  width: 100%;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: hidden;
+
+  &__control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    width: 50%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    &__prev,
+    &__next {
+      cursor: pointer;
+      // position: absolute;
+      top: 40%;
+      width: auto;
+      padding: 10px 0;
+      margin: 0 10px;
+      font-weight: bold;
+      // font-size: 18px;
+      transition: 0.7s ease;
+      border-radius: 0 4px 4px 0;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    &__next {
+      right: 0;
+    }
+
+    &__prev {
+      left: 0;
+    }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 0.9s ease;
+    overflow: hidden;
+    visibility: visible;
+    position: absolute;
+    width: 100%;
+    opacity: 1;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    visibility: hidden;
+    width: 100%;
+    opacity: 0;
+  }
+  .ant-btn {
+    height: 1px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hideOnWeb {
+    display: none;
+  }
+}
+
+
+.pictureCard {
+  transition: ease all 0.5s;
+  &__details {
+    background: #fff;
+    //position: absolute;
+    width: 100%;
+    padding: 10px 15px;
+    bottom: 0;
+    transition: ease all 0.45s;
+    //opacity: 0;
+    //visibility: hidden;
+    //transform: translateY(110px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    z-index: 1;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    h4 {
+      color: #4938B1;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+
+    h5 {
+      font-size: .7rem;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    transition: ease all 0.5s;
+
+    .pictureCard__details {
+      //opacity: 1;
+      //visibility: visible;
+      //transform: translateY(0);
+    }
+
+    // &__details {
+    //     font-size: 4px;
+    // // opacity: 1;
+    // // visibility: visible;
+    // // transform: translateY(0);
+    // }
+    // opacity: 1;
+    // visibility: visible;
+    // transform: translateY(0);
+  }
+}
+
+//mobile
+
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
+
+  .onMenuOpen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: -1;
+
+    &.open {
+      z-index: 1040;
+    }
+  }
+}
