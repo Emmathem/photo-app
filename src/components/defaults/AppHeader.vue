@@ -2,13 +2,13 @@
   <header class="header">
     <div class="header__mobile hideOnWeb" @click="toggleMobileMenu">
       <!-- {{ mobileMenu === false ? <a-icon type="menu-fold" /> : 'd'}} -->
-     <menu-icon />
+      <font-awesome-icon icon="fa fa-indent" @click="toggleMobileMenu" />
     </div>
     <div class="lg:block hidden flex-1 rounded-md overflow-hidden">
       <div class="flex bg-white shadow-md">
         <div class="flex flex-1 items-center mr-4">
           <div class="px-3 pl-5">
-            <search-icon />
+<!--            <search-icon />-->
           </div>
           <input
             v-model="searchObject.query"
@@ -24,7 +24,7 @@
     </div>
     <div class="header__nav">
       <div class="header__nav__notify" @click="openNotification">
-        <bell-icon size="2x" />
+<!--        <bell-icon />-->
         <div class="count"><span>3</span></div>
       </div>
       <div class="header__notify !top-[4rem]" :class="active ? 'active' : 'inactive'">
@@ -73,7 +73,8 @@
             <div class="w-[15px] h-[15px] rounded-full bg-green-500 flex items-center absolute bottom-0 right-0 z-50"></div>
           </div>
           <div class="flex items-center ml-3 cursor-pointer" @click="gotoProfile">
-            <span class="text-md pr-3">Abigail</span><chevron-down-icon size="1.3x" />
+            <span class="text-md pr-3">Abigail</span>
+<!--            <chevron-down-icon />-->
           </div>
         </div>
       </div>
@@ -89,18 +90,18 @@
 
 <script>
 import { LOGGER } from '@/utils/miscelleous'
-import { BellIcon, MenuIcon, SearchIcon, ChevronDownIcon } from 'vue-feather-icons'
-import { mapActions, mapState } from 'vuex'
+// import { BellIcon, MenuIcon, SearchIcon, ChevronDownIcon } from 'vue-feather-icons'
+import { mapState } from 'vuex'
 import BaseButton from '@/components/BaseButton'
 import * as PhotoService from '@/http/PhotoService'
 export default {
   name: 'AppHeader',
   components: {
     BaseButton,
-    MenuIcon,
-    ChevronDownIcon,
-    BellIcon,
-    SearchIcon
+    // MenuIcon,
+    // ChevronDownIcon,
+    // BellIcon,
+    // SearchIcon
   },
   data () {
     return {
@@ -116,9 +117,7 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      photoResult: state => state.getAllImages.allImages
-    })
+    ...mapState({})
   },
   methods: {
     gotoProfile () {
@@ -139,9 +138,6 @@ export default {
           console.log(res)
         }).catch((e) => console.log(e))
     },
-    ...mapActions({
-      searchPhoto: 'getAllImages/SEARCH_ONE_PHOTO'
-    })
   }
 }
 </script>

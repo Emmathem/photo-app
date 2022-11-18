@@ -3,7 +3,12 @@
     <div class="flex flex-wrap py-3 px-4">
       <div v-for="(item, index) in CategoryMenu" :key="index">
         <div @click="searchPhotos(item.value)" class="px-4 border-r border-r-gray-500 cursor-pointer">
-          <span class="flex items-center"><span class="pr-1 capitalize">{{ item.name }}</span> <chevron-down-icon size="1.2x" /></span>
+          <span class="flex items-center">
+            <span class="pr-1 capitalize">
+              {{ item.name }}
+            </span>
+            <font-awesome-icon icon="fa-solid fa-angle-down" size="1x" />
+          </span>
         </div>
       </div>
     </div>
@@ -11,12 +16,12 @@
 </template>
 
 <script>
-import { ChevronDownIcon } from 'vue-feather-icons'
+// import { ChevronDownIcon } from 'vue-feather-icons'
 import { CategoryMenu } from '@/utils/localdata'
 export default {
   name: 'AppCategoryMenu',
   components: {
-    ChevronDownIcon
+    // ChevronDownIcon
   },
   data () {
     return {

@@ -1,19 +1,23 @@
 <template lang="html">
+  <LayoutFile>
     <div class="home-view">
         <UserCard v-if="photo.user.username" :username="photo.user.username"></UserCard>
         <PhotoElement :photo="photo"></PhotoElement>
     </div>
+  </LayoutFile>
 </template>
 
 <script>
 import PhotoElement from './PhotoElement'
 import UserCard from './UserCard'
 import * as PhotoService from '../http/PhotoService'
+import LayoutFile from "@/components/defaults/Layout";
 
 export default {
   name: 'PhotoView',
 
   components: {
+    LayoutFile,
     PhotoElement,
     UserCard
   },

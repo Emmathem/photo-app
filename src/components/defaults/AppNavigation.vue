@@ -1,7 +1,7 @@
 <template>
   <aside class="navigation" :class="mobileMenu ? 'active' : 'inactive'">
     <div class="navigation__closeMenu lg:hidden block">
-      <menu-icon @click="toggleMobileMenu" type="menu-unfold" />
+      <font-awesome-icon icon="fa fa-indent" @click="toggleMobileMenu" />
     </div>
     <div class="navigation__header">
       <img src="../../assets/images/logo.jpeg" alt="logo" />
@@ -11,7 +11,7 @@
         <li @click="searchPhotos">
           <router-link to="/" class="active">
             <div class="icons">
-              <home-icon size="1x" />
+              <font-awesome-icon icon="fa-solid fa-user-secret" />
             </div>
             <div>Home</div>
           </router-link>
@@ -19,7 +19,7 @@
         <li>
           <router-link to="/">
             <div class="icons">
-              <message-circle-icon size="1x" />
+              <font-awesome-icon icon="fa-solid fa-envelope-open" />
             </div>
             <div>Message</div>
           </router-link>
@@ -29,31 +29,41 @@
       <ul>
         <li>
           <router-link to="/">
-            <div class="icons"><git-branch-icon size="1x" /></div>
+            <div class="icons">
+              <font-awesome-icon icon="fa-solid fa-certificate" />
+            </div>
             <div>Ranking</div></router-link
           >
         </li>
         <li>
           <router-link to="/"
-            ><div class="icons"><globe-icon size="1x" /></div>
+            ><div class="icons">
+            <font-awesome-icon icon="fa-solid fa-signal" />
+          </div>
             <div>Challenge</div></router-link
           >
         </li>
         <li>
           <router-link to="/"
-            ><div class="icons"><user-plus-icon size="1x" /></div>
+            ><div class="icons">
+            <font-awesome-icon icon="fa-solid fa-drum" />
+          </div>
             <div>Party</div></router-link
           >
         </li>
         <li>
-          <router-link to="/"
-            ><div class="icons"><wifi-icon size="1x" /></div>
+          <router-link to="/">
+            <div class="icons">
+              <font-awesome-icon icon="fa-solid fa-globe" />
+            </div>
             <div>Connect</div></router-link
           >
         </li>
         <li>
           <router-link to="/"
-            ><div class="icons"><user-plus-icon size="1x" /></div>
+            ><div class="icons">
+            <font-awesome-icon icon="fa-solid fa-users" />
+          </div>
             <div>Group</div></router-link
           >
         </li>
@@ -64,20 +74,10 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { HomeIcon, MenuIcon, MessageCircleIcon, GitBranchIcon, WifiIcon, UserPlusIcon, GlobeIcon } from 'vue-feather-icons'
 import { LOGGER } from '@/utils/miscelleous'
 
 export default {
   name: 'AppNavigation',
-  components: {
-    HomeIcon,
-    MenuIcon,
-    MessageCircleIcon,
-    GitBranchIcon,
-    WifiIcon,
-    UserPlusIcon,
-    GlobeIcon
-  },
   props: {
     mobileMenu: {
       type: Boolean,

@@ -9,7 +9,8 @@
         <div class="flex justify-center">
           <div class="flex items-center" @click="toggleLike(photo)">
             <span class="pr-2">Like</span>
-            <heart-icon class="text-red-800" />
+<!--            <heart-icon class="text-red-800" />-->
+            <font-awesome-icon icon="fa-solid fa-heart" />
             <span class="font-bold pl-3">{{ photo.likes }}</span>
           </div>
 <!--          <div>Unlike <heart-icon /></div>-->
@@ -20,10 +21,10 @@
 </template>
 
 <script>
-import { HeartIcon } from 'vue-feather-icons'
+// import { HeartIcon } from 'vue-feather-icons'
 export default {
   name: 'PhotoElement',
-  components: { HeartIcon },
+  // components: { HeartIcon },
   props: {
     photo: {
       type: Object,
