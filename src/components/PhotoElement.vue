@@ -10,7 +10,7 @@
           <div class="flex items-center" @click="toggleLike(photo)">
             <span class="pr-2">Like</span>
 <!--            <heart-icon class="text-red-800" />-->
-            <font-awesome-icon icon="fa-solid fa-heart" />
+            <font-awesome-icon icon="fa-solid fa-heart" class="text-red-500" />
             <span class="font-bold pl-3">{{ photo.likes }}</span>
           </div>
 <!--          <div>Unlike <heart-icon /></div>-->

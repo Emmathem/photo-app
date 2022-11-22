@@ -8,7 +8,7 @@
       <div class="flex bg-white shadow-md">
         <div class="flex flex-1 items-center mr-4">
           <div class="px-3 pl-5">
-<!--            <search-icon />-->
+            <font-awesome-icon icon="fa-solid fa-search" />
           </div>
           <input
             v-model="searchObject.query"
@@ -18,17 +18,17 @@
           />
         </div>
         <div class="py-1">
-          <base-button type="primary" text="Search" :processing="loading" @click="searchPhotos" styles="bg-gray-800" />
+          <base-button type="primary" text="Search" :processing="loading" @click="searchPhotosMethod" styles="bg-gray-800" />
         </div>
       </div>
+      <p v-if="error" class="text-red-500 py-3 text-sm">{{ error }}</p>
     </div>
     <div class="header__nav">
       <div class="header__nav__notify" @click="openNotification">
-<!--        <bell-icon />-->
+        <font-awesome-icon icon="fa-solid fa-bell fa-4x" class="text-lg" />
         <div class="count"><span>3</span></div>
       </div>
       <div class="header__notify !top-[4rem]" :class="active ? 'active' : 'inactive'">
-<!--        <div class="header__notify__hanger"><chevron-up-icon /></div>-->
         <div class="header__notify__container">
           <div class="header__notify__image">
             <img src="../../assets/images/images2.jpeg" alt="u" />
@@ -74,7 +74,6 @@
           </div>
           <div class="flex items-center ml-3 cursor-pointer" @click="gotoProfile">
             <span class="text-md pr-3">Abigail</span>
-<!--            <chevron-down-icon />-->
           </div>
         </div>
       </div>
@@ -90,18 +89,13 @@
 
 <script>
 import { LOGGER } from '@/utils/miscelleous'
-// import { BellIcon, MenuIcon, SearchIcon, ChevronDownIcon } from 'vue-feather-icons'
-import { mapState } from 'vuex'
+import {mapActions, mapState} from 'vuex'
 import BaseButton from '@/components/BaseButton'
-import * as PhotoService from '@/http/PhotoService'
+// import * as PhotoService from '@/http/PhotoService'
 export default {
   name: 'AppHeader',
   components: {
     BaseButton,
-    // MenuIcon,
-    // ChevronDownIcon,
-    // BellIcon,
-    // SearchIcon
   },
   data () {
     return {
@@ -113,7 +107,8 @@ export default {
         page: 1,
         per_page: 10,
         order_by: 'relevant'
-      }
+      },
+      error: ''
     }
   },
   computed: {
@@ -131,13 +126,19 @@ export default {
       LOGGER('active', this.active)
       this.active = !this.active
     },
-    searchPhotos () {
-      LOGGER('obj', this.searchObject)
-      PhotoService.searchPhotos({ clientId: this.$root.client_id, ...this.searchObject })
-        .then((res) => {
-          console.log(res)
-        }).catch((e) => console.log(e))
+    async searchPhotosMethod() {
+      if (this.searchObject.query === '') {
+        this.error = 'Enter a search query'
+        return;
+      }
+      const searchObj = {
+        client_id: this.$root.client_id,
+        query: this.searchObject.query,
+      };
+      console.log('s', searchObj);
+      await this.searchForPhotos(searchObj);
     },
+    ...mapActions("PhotoService", ['searchForPhotos', 'getPhotos'])
   }
 }
 </script>

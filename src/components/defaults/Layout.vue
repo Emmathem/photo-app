@@ -2,7 +2,11 @@
   <div class="default wrapper">
     <app-navigation v-if="$root.client_id" :mobile-menu="mobileMenu" @toggleMenu="toggleMobileMenu" />
     <section :class="$root.client_id ? 'sectionContainer' : ''">
-      <app-header v-if="$root.client_id" :mobile-menu="mobileMenu" @toggleMenu="toggleMobileMenu" />
+      <app-header
+          v-if="$root.client_id"
+          :mobile-menu="mobileMenu"
+          @toggleMenu="toggleMobileMenu"
+      />
       <slot />
     </section>
     <div
@@ -17,12 +21,13 @@
 <script>
 import AppHeader from "@/components/defaults/AppHeader";
 import AppNavigation from "@/components/defaults/AppNavigation";
+
 export default {
   name: "LayoutFile",
   components: {AppNavigation, AppHeader},
   data () {
     return {
-      mobileMenu: false
+      mobileMenu: false,
     }
   },
   methods: {
@@ -31,7 +36,7 @@ export default {
     },
     elementClicked () {
       this.mobileMenu = true
-    }
+    },
   }
 }
 </script>

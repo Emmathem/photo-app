@@ -7,7 +7,7 @@
             <span class="pr-1 capitalize">
               {{ item.name }}
             </span>
-            <font-awesome-icon icon="fa-solid fa-angle-down" size="1x" />
+            <font-awesome-icon icon="fa-solid fa-angle-down fa-2x" />
           </span>
         </div>
       </div>
@@ -16,13 +16,10 @@
 </template>
 
 <script>
-// import { ChevronDownIcon } from 'vue-feather-icons'
+
 import { CategoryMenu } from '@/utils/localdata'
 export default {
   name: 'AppCategoryMenu',
-  components: {
-    // ChevronDownIcon
-  },
   data () {
     return {
       CategoryMenu

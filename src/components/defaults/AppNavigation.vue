@@ -101,12 +101,10 @@ export default {
     },
     async searchPhotos () {
       try {
-        this.loading = true
-        await this.fetchAllImages()
+        await this.getPhotos({client_id: this.$root.client_id})
         this.loading = false
       } catch (e) {
         LOGGER('e', e)
-        this.loading = false
         this.$notification.error({
           message: 'Error',
           description: e,
@@ -114,10 +112,7 @@ export default {
         })
       }
     },
-    ...mapActions({
-      fetchAllImages: 'getAllImages/FETCH_ALL_PHOTOS',
-      searchPhoto: 'getAllImages/SEARCH_ONE_PHOTO'
-    })
+    ...mapActions("PhotoService", ['getPhotos'])
   }
 }
 </script>
