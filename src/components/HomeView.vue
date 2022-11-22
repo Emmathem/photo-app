@@ -90,7 +90,7 @@ export default {
           console.log(res)
         }).catch((e) => console.log(e))
     },
-    ...mapActions("PhotoService", ['searchForPhotos', 'getPhotos'])
+    ...mapActions("PhotoService", ['searchForPhotos', 'getPhotos']),
   }
 }
 </script>

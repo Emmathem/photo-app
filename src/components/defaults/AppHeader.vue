@@ -132,10 +132,11 @@ export default {
         return;
       }
       const searchObj = {
-        client_id: this.$root.client_id,
+        ...this.searchObject,
+        // client_id: this.$root.client_id,
         query: this.searchObject.query,
       };
-      console.log('s', searchObj);
+      this.error = '';
       await this.searchForPhotos(searchObj);
     },
     ...mapActions("PhotoService", ['searchForPhotos', 'getPhotos'])

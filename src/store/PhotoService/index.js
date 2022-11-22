@@ -10,11 +10,15 @@ export default {
         photos: [],
         serverResponse: null,
         fetching: false,
+        favPhotos: [],
     },
     mutations: {
         GET_ALL_PHOTOS: (state, data) => (state.photos = data),
         TOGGLE_FETCHING: (state, data) => (state.fetching = data),
-        GET_SERVER_RESPONSE: (state, data) => (state.serverResponse = data)
+        ADD_TO_FAV: (state, data) => {
+            console.log('da', data);
+            state.favPhotos.push(data)
+        }
     },
     actions: {
         async getPhotos ({commit}, payload) {

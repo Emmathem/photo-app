@@ -17,11 +17,11 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/">
+          <router-link to="/faves">
             <div class="icons">
-              <font-awesome-icon icon="fa-solid fa-envelope-open" />
+              <font-awesome-icon icon="fa-solid fa-heart" />
             </div>
-            <div>Message</div>
+            <div>My Fav</div>
           </router-link>
         </li>
       </ul>

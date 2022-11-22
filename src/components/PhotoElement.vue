@@ -58,7 +58,8 @@ export default {
       this.$router.push({ name: 'Photo', params: { id: this.photo.id } })
     },
     toggleLike (photo) {
-      this.likedPhoto.push(photo)
+      // this.likedPhoto.push(photo)
+      this.$emit('addPictureToFav', photo);
     },
     onBtnClick () {
       console.log('Mark photo as fave')
