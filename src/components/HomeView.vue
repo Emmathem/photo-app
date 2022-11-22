@@ -10,6 +10,7 @@
               :photos="photos"
               @searchPhotosMethod="searchPhotosMethod"
           />
+          <Pagination />
           <EmptyData v-if="!fetching && photos.length <= 0" />
         </div>
       </Layout>
@@ -24,6 +25,7 @@ import {mapActions, mapState} from "vuex";
 import Layout from "@/components/defaults/Layout";
 import BaseLoader from "@/components/BaseLoader";
 import EmptyData from "@/components/EmptyData";
+import { Pagination } from 'ant-design-vue';
 
 export default {
   name: 'HomeView',
@@ -32,14 +34,12 @@ export default {
     BaseLoader,
     Layout,
     AppCategoryMenu,
-    PhotoList
+    PhotoList,
+    Pagination
   },
 
   data () {
-    return {
-      // photos: [],
-      // fetching: false,
-    }
+    return {}
   },
   computed: {
     ...mapState('PhotoService', {

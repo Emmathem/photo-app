@@ -1,6 +1,12 @@
 <template lang="html">
     <div class="grid lg:grid-cols-6 grid-col-1 gap-10">
-        <PhotoElement v-for="photo in photos" :key="photo.id" :photo="photo" @addPictureToFav="addPictureToFav"></PhotoElement>
+        <PhotoElement
+            v-for="photo in photos"
+            :key="photo.id"
+            :photo="photo"
+            :has-fav="false"
+            @addPictureToFav="addPictureToFav"
+        />
     </div>
 </template>
 

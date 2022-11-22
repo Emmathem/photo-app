@@ -6,22 +6,25 @@
         <h5>
           {{ photo.location }}
         </h5>
-        <div class="flex justify-center">
+        <div v-if="!showFav" class="flex justify-center">
           <div class="flex items-center" @click="toggleLike(photo)">
             <span class="pr-2">Like</span>
-<!--            <heart-icon class="text-red-800" />-->
             <font-awesome-icon icon="fa-solid fa-heart" class="text-red-500" />
             <span class="font-bold pl-3">{{ photo.likes }}</span>
           </div>
-<!--          <div>Unlike <heart-icon /></div>-->
+        </div>
+        <div v-if="showFav" class="flex justify-center">
+          <div class="flex items-center" @click="removeFromLike()">
+            <span class="pr-2">Remove</span>
+          </div>
         </div>
       </div>
-<!--        <button type="button" @click="onBtnClick">{{ btnText }}</button>-->
     </div>
 </template>
 
 <script>
-// import { HeartIcon } from 'vue-feather-icons'
+import { notification } from 'ant-design-vue';
+import {mapMutations} from "vuex";
 export default {
   name: 'PhotoElement',
   // components: { HeartIcon },
@@ -30,7 +33,10 @@ export default {
       type: Object,
       required: true
     },
-
+    showFav: {
+      type: Boolean,
+      default: false,
+    },
     size: {
       type: String,
       default: 'regular'
@@ -58,12 +64,25 @@ export default {
       this.$router.push({ name: 'Photo', params: { id: this.photo.id } })
     },
     toggleLike (photo) {
-      // this.likedPhoto.push(photo)
       this.$emit('addPictureToFav', photo);
+      notification.success({
+        message: 'Success',
+        description: 'Added to your Fav library!'
+      })
+    },
+    removeFromLike () {
+      this.removeFromFav(this.photo);
+      notification.success({
+        message: 'Success',
+        description: 'Removed from your Fav library!'
+      })
     },
     onBtnClick () {
       console.log('Mark photo as fave')
-    }
+    },
+    ...mapMutations({
+      removeFromFav: 'PhotoService/REMOVE_FROM_FAV',
+    })
   }
 }
 </script>

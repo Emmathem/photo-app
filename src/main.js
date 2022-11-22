@@ -3,6 +3,7 @@ import App from './App.vue'
 import store from "@/store/store"
 import '@/assets/styles/tailwind.css'
 import '@/assets/styles/main.css';
+import 'ant-design-vue/dist/antd.css';
 import router from "@/router";
 import './http/'
 // import Toast from "vue-toastification";
@@ -23,6 +24,5 @@ app.config.productionTip = false
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.provide('client_id', localStorage.getItem('client_id'))
 app.use(router);
-// app.use(Toast, {});
 app.use(store);
 app.mount('#app')

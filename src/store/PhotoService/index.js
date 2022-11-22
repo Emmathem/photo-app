@@ -18,7 +18,17 @@ export default {
         ADD_TO_FAV: (state, data) => {
             console.log('da', data);
             state.favPhotos.push(data)
-        }
+        },
+        REMOVE_FROM_FAV: (state, data) => {
+            console.log('remove', data);
+            // state.favPhotos.filter((res) => res.id !== data.id)
+            state.favPhotos.splice(
+                state.favPhotos.findIndex(b => {
+                    return b?.id === data.id;
+                }),
+                1
+            );
+        },
     },
     actions: {
         async getPhotos ({commit}, payload) {
